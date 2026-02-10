@@ -13,7 +13,7 @@ export const Navbar: React.FC = () => {
   const location = useLocation();
 
   // Define routes that have a dark hero section where the nav should be transparent/white text initially
-  const isDarkHeroRoute = location.pathname === '/' || location.pathname === '/journal';
+  const isDarkHeroRoute = location.pathname === '/' || location.pathname === '/journal' || location.pathname === '/about';
 
   // Handle scroll effect
   useEffect(() => {
@@ -66,26 +66,26 @@ export const Navbar: React.FC = () => {
                 to="/category/all"
                 className={`text-xs uppercase tracking-[0.15em] ${hoverColorClass} transition-colors font-medium`}
               >
-                Shop All
+                Collection
               </Link>
               <Link 
-                to="/journal"
+                to="/lookbook"
                 className={`text-xs uppercase tracking-[0.15em] ${hoverColorClass} transition-colors font-medium`}
               >
-                Journal
+                Lookbook
               </Link>
               <Link 
                 to="/about"
                 className={`text-xs uppercase tracking-[0.15em] ${hoverColorClass} transition-colors font-medium`}
               >
-                About
+                Maison
               </Link>
             </nav>
           </div>
 
           {/* Center Section: Logo */}
           <div className="flex justify-center">
-            <Link to="/" className="font-serif text-3xl tracking-wide font-bold italic hover:opacity-80 transition-opacity whitespace-nowrap">
+            <Link to="/" className="font-serif text-xl md:text-3xl tracking-wide font-bold italic hover:opacity-80 transition-opacity whitespace-nowrap">
               ELEVEN
             </Link>
           </div>
@@ -127,11 +127,12 @@ export const Navbar: React.FC = () => {
               </button>
               
               <Link to="/category/all" className="text-lg uppercase tracking-widest font-serif border-b border-gray-100 pb-2">Shop All</Link>
+              <Link to="/lookbook" className="text-lg uppercase tracking-widest font-serif border-b border-gray-100 pb-2">Lookbook</Link>
+              <Link to="/about" className="text-lg uppercase tracking-widest font-serif border-b border-gray-100 pb-2">Maison</Link>
               <Link to="/journal" className="text-lg uppercase tracking-widest font-serif border-b border-gray-100 pb-2">Journal</Link>
-              <Link to="/about" className="text-lg uppercase tracking-widest font-serif border-b border-gray-100 pb-2">About</Link>
               
               <div className="pt-2 space-y-4">
-                <span className="text-xs text-gray-400 uppercase tracking-widest block mb-4">Categories</span>
+                <span className="text-xs text-gray-400 uppercase tracking-widest block mb-4">Collections</span>
                 {CATEGORIES.map(cat => (
                   <Link 
                     key={cat.id} 

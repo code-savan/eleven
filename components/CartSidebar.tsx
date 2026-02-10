@@ -7,15 +7,22 @@ import { Link } from 'react-router-dom';
 export const CartSidebar: React.FC = () => {
   const { cart, isCartOpen, setIsCartOpen, removeFromCart, updateQuantity, subtotal } = useCart();
 
-  if (!isCartOpen) return null;
-
   return (
     <>
+      {/* Backdrop */}
       <div 
-        className="fixed inset-0 bg-black/40 z-[60] backdrop-blur-sm transition-opacity"
+        className={`fixed inset-0 bg-black/40 z-[60] backdrop-blur-sm transition-opacity duration-500 ${
+          isCartOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        }`}
         onClick={() => setIsCartOpen(false)}
       />
-      <div className="fixed inset-y-0 right-0 w-full max-w-md bg-white shadow-2xl z-[70] transform transition-transform duration-500 ease-in-out flex flex-col">
+      
+      {/* Sidebar */}
+      <div 
+        className={`fixed inset-y-0 right-0 w-full max-w-md bg-white shadow-2xl z-[70] transform transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] flex flex-col ${
+          isCartOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}
+      >
         
         <div className="p-6 flex items-center justify-between border-b">
           <h2 className="font-serif text-xl">Shopping Bag ({cart.length})</h2>

@@ -13,6 +13,7 @@ import { Contact } from './pages/Contact';
 import { Shipping } from './pages/Shipping';
 import { FAQ } from './pages/FAQ';
 import { Sizing } from './pages/Sizing';
+import { Lookbook } from './pages/Lookbook';
 
 const App: React.FC = () => {
   return (
@@ -23,6 +24,7 @@ const App: React.FC = () => {
             <Route index element={<Home />} />
             <Route path="about" element={<About />} />
             <Route path="journal" element={<Journal />} />
+            <Route path="lookbook" element={<Lookbook />} />
             <Route path="contact" element={<Contact />} />
             <Route path="shipping" element={<Shipping />} />
             <Route path="faq" element={<FAQ />} />

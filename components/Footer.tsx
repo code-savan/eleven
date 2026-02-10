@@ -8,19 +8,20 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           
           <div className="space-y-6">
-            <h3 className="font-serif text-2xl tracking-wider">ELEVEN</h3>
+            <h3 className="font-serif text-xl md:text-2xl tracking-wider italic">ELEVEN</h3>
             <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
-              Refined luxury for the modern individual. Timeless designs, exceptional craftsmanship, and sustainable practices.
+              Refined leather goods for the modern individual. Timeless silhouettes, exceptional craftsmanship, and sustainable vegetable tanning.
             </p>
           </div>
 
           <div>
-            <h4 className="uppercase tracking-widest text-xs font-bold mb-6 text-gray-400">Shop</h4>
+            <h4 className="uppercase tracking-widest text-xs font-bold mb-6 text-gray-400">Collections</h4>
             <ul className="space-y-4 text-sm text-gray-300">
-              <li><Link to="/category/ready-to-wear" className="hover:text-white transition-colors">Ready to Wear</Link></li>
-              <li><Link to="/category/handbags" className="hover:text-white transition-colors">Handbags</Link></li>
-              <li><Link to="/category/shoes" className="hover:text-white transition-colors">Shoes</Link></li>
-              <li><Link to="/category/accessories" className="hover:text-white transition-colors">Accessories</Link></li>
+              <li><Link to="/category/black" className="hover:text-white transition-colors">Noir Collection</Link></li>
+              <li><Link to="/category/brown" className="hover:text-white transition-colors">Cognac & Earth</Link></li>
+              <li><Link to="/category/wood" className="hover:text-white transition-colors">Wood & Rattan</Link></li>
+              <li><Link to="/category/green" className="hover:text-white transition-colors">Forest Green</Link></li>
+              <li><Link to="/lookbook" className="hover:text-white transition-colors">The Lookbook</Link></li>
             </ul>
           </div>
 
@@ -30,13 +31,13 @@ export const Footer: React.FC = () => {
               <li><Link to="/contact" className="hover:text-white transition-colors">Contact Us</Link></li>
               <li><Link to="/shipping" className="hover:text-white transition-colors">Shipping & Returns</Link></li>
               <li><Link to="/faq" className="hover:text-white transition-colors">FAQ</Link></li>
-              <li><Link to="/sizing" className="hover:text-white transition-colors">Sizing Guide</Link></li>
+              <li><Link to="/about" className="hover:text-white transition-colors">Our Process</Link></li>
             </ul>
           </div>
 
           <div>
             <h4 className="uppercase tracking-widest text-xs font-bold mb-6 text-gray-400">Newsletter</h4>
-            <p className="text-sm text-gray-400 mb-4">Subscribe to receive updates, access to exclusive deals, and more.</p>
+            <p className="text-sm text-gray-400 mb-4">Subscribe to receive updates on new drops, care guides, and exclusive events.</p>
             <form className="flex border-b border-gray-700 pb-2">
               <input 
                 type="email" 
@@ -52,7 +53,7 @@ export const Footer: React.FC = () => {
         </div>
 
         <div className="border-t border-gray-900 mt-20 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600">
-          <p>&copy; {new Date().getFullYear()} Eleven Luxury Fashion. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Eleven Luxury Goods. All rights reserved.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <Link to="/privacy" className="hover:text-gray-400">Privacy Policy</Link>
             <Link to="/terms" className="hover:text-gray-400">Terms of Service</Link>

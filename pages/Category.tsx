@@ -6,7 +6,7 @@ import { Product, SortOption } from '../types';
 import { CATEGORIES } from '../constants';
 import { SlidersHorizontal, ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
 
-const ITEMS_PER_PAGE = 8;
+const ITEMS_PER_PAGE = 12;
 
 export const Category: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
