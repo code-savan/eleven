@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { productService } from '../services/productService';
 import { Product } from '../types';
 import { useCart } from '../context/CartContext';
+import { useCurrency } from '../context/CurrencyContext';
 import { Button } from '../components/Button';
 import { ChevronRight, Star } from 'lucide-react';
 
@@ -15,6 +16,7 @@ export const ProductDetail: React.FC = () => {
   const [selectedSize, setSelectedSize] = useState('');
   
   const { addToCart } = useCart();
+  const { formatPrice } = useCurrency();
 
   useEffect(() => {
     if (id) {
@@ -71,7 +73,7 @@ export const ProductDetail: React.FC = () => {
         <div className="flex flex-col h-full pt-4">
           <div className="flex-1">
             <h1 className="font-serif text-3xl md:text-4xl mb-4 text-luxury-black">{product.name}</h1>
-            <p className="text-2xl font-sans font-light mb-8">${product.price.toLocaleString()}</p>
+            <p className="text-2xl font-sans font-light mb-8">{formatPrice(product.price)}</p>
             
             <p className="text-gray-600 leading-relaxed mb-8 font-light text-sm md:text-base">
               {product.description}
@@ -119,7 +121,7 @@ export const ProductDetail: React.FC = () => {
                onClick={() => addToCart(product, 1, selectedColor, selectedSize)}
                className="h-14"
              >
-               Add to Bag - ${(product.price).toLocaleString()}
+               Add to Bag - {formatPrice(product.price)}
              </Button>
              
              <div className="text-xs text-gray-500 text-center flex flex-col gap-2 mt-4">

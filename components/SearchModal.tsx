@@ -3,6 +3,7 @@ import { X, Search as SearchIcon, ArrowRight, ChevronRight } from 'lucide-react'
 import { Link } from 'react-router-dom';
 import { PRODUCTS, ARTICLES } from '../constants';
 import { Product, Article } from '../types';
+import { useCurrency } from '../context/CurrencyContext';
 
 interface SearchModalProps {
   isOpen: boolean;
@@ -14,6 +15,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [filteredArticles, setFilteredArticles] = useState<Article[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
+  const { formatPrice } = useCurrency();
 
   useEffect(() => {
     if (isOpen) {
@@ -118,7 +120,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
                           </div>
                           <div className="flex flex-col justify-center">
                             <h4 className="font-serif text-lg leading-tight group-hover:text-luxury-gold-dark transition-colors">{product.name}</h4>
-                            <p className="text-sm text-gray-500 mt-1">${product.price.toLocaleString()}</p>
+                            <p className="text-sm text-gray-500 mt-1">{formatPrice(product.price)}</p>
                           </div>
                         </Link>
                       ))}

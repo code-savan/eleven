@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { useCart } from '../context/CartContext';
+import { useCurrency } from '../context/CurrencyContext';
 import { Button } from '../components/Button';
 import { ChevronRight, Check } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export const Checkout: React.FC = () => {
   const { cart, subtotal } = useCart();
+  const { formatPrice } = useCurrency();
   const [step, setStep] = useState<1 | 2 | 3>(1);
   const [loading, setLoading] = useState(false);
 
@@ -133,7 +135,7 @@ export const Checkout: React.FC = () => {
                 <div className="pt-8 flex gap-4">
                   <Button type="button" variant="ghost" onClick={() => setStep(1)}>Back</Button>
                   <Button fullWidth type="submit" disabled={loading}>
-                    {loading ? 'Processing...' : `Pay $${subtotal.toLocaleString()}`}
+                    {loading ? 'Processing...' : `Pay ${formatPrice(subtotal)}`}
                   </Button>
                 </div>
               </form>
@@ -160,7 +162,7 @@ export const Checkout: React.FC = () => {
                     <p className="text-xs text-gray-500 mt-1">{item.selectedColor}</p>
                   </div>
                   <div className="text-sm font-medium">
-                    ${(item.price * item.quantity).toLocaleString()}
+                    {formatPrice(item.price * item.quantity)}
                   </div>
                 </div>
               ))}
@@ -169,7 +171,7 @@ export const Checkout: React.FC = () => {
             <div className="border-t border-gray-200 pt-6 space-y-4 text-sm">
               <div className="flex justify-between">
                 <span className="text-gray-500">Subtotal</span>
-                <span>${subtotal.toLocaleString()}</span>
+                <span>{formatPrice(subtotal)}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-gray-500">Shipping</span>
@@ -177,7 +179,7 @@ export const Checkout: React.FC = () => {
               </div>
               <div className="flex justify-between border-t border-gray-200 pt-4 text-lg font-serif">
                 <span>Total</span>
-                <span>${subtotal.toLocaleString()}</span>
+                <span>{formatPrice(subtotal)}</span>
               </div>
             </div>
           </div>

@@ -1,12 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Product } from '../types';
+import { useCurrency } from '../context/CurrencyContext';
 
 interface ProductCardProps {
   product: Product;
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+  const { formatPrice } = useCurrency();
+
   return (
     <Link to={`/product/${product.id}`} className="group block h-full">
       <div className="relative overflow-hidden bg-gray-100 aspect-[3/4] mb-6">
@@ -21,7 +24,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       </div>
       <div className="flex flex-col items-center text-center space-y-2">
         <h3 className="font-serif text-lg text-luxury-black">{product.name}</h3>
-        <p className="text-sm text-gray-500 font-sans">${product.price.toLocaleString()}</p>
+        <p className="text-sm text-gray-500 font-sans">{formatPrice(product.price)}</p>
       </div>
     </Link>
   );

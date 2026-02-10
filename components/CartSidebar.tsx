@@ -1,11 +1,13 @@
 import React from 'react';
 import { X, Plus, Minus, Trash2 } from 'lucide-react';
 import { useCart } from '../context/CartContext';
+import { useCurrency } from '../context/CurrencyContext';
 import { Button } from './Button';
 import { Link } from 'react-router-dom';
 
 export const CartSidebar: React.FC = () => {
   const { cart, isCartOpen, setIsCartOpen, removeFromCart, updateQuantity, subtotal } = useCart();
+  const { formatPrice } = useCurrency();
 
   return (
     <>
@@ -57,7 +59,7 @@ export const CartSidebar: React.FC = () => {
                       </button>
                     </div>
                     <p className="text-sm text-gray-500 mt-1">{item.selectedColor} / {item.selectedSize}</p>
-                    <p className="text-sm mt-2">${item.price.toLocaleString()}</p>
+                    <p className="text-sm mt-2">{formatPrice(item.price)}</p>
                   </div>
                   
                   <div className="flex items-center space-x-4">
@@ -88,7 +90,7 @@ export const CartSidebar: React.FC = () => {
           <div className="border-t p-6 space-y-4 bg-gray-50">
             <div className="flex justify-between items-center text-lg font-serif">
               <span>Subtotal</span>
-              <span>${subtotal.toLocaleString()}</span>
+              <span>{formatPrice(subtotal)}</span>
             </div>
             <p className="text-xs text-gray-500 text-center">Shipping and taxes calculated at checkout.</p>
             <Link to="/checkout" onClick={() => setIsCartOpen(false)} className="block">

@@ -85,7 +85,7 @@ export const Navbar: React.FC = () => {
 
           {/* Center Section: Logo */}
           <div className="flex justify-center">
-            <Link to="/" className="font-serif text-xl md:text-3xl tracking-wide font-bold italic hover:opacity-80 transition-opacity whitespace-nowrap">
+            <Link to="/" className="font-serif text-xl md:text-2xl tracking-wide font-bold italic hover:opacity-80 transition-opacity whitespace-nowrap">
               ELEVEN
             </Link>
           </div>
